@@ -1,0 +1,25 @@
+{% include "headeradmin.html" %}
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Upload Stats:</h2><br>
+            <p>Number of files: {{numOfFiles}}</p>
+            <p>Number of text uploads:  {{numOfText}}</p>
+            <p>Number of file uploads: IMPLEMENT ME</p>
+        </div>
+        <div class="jumbotron">
+            <h2>Quick Links:</h2><br>
+            <ul>
+                <li>
+                    <a href="text">Text Admin</a>
+                </li>
+                <li>
+                    <a href="uploads">Upload Admin</a>
+                </li>
+                <li>
+                    <a href="{{hostname}}/admin/auth/user/">User Manager</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+</body>
