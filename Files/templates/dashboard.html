@@ -1,0 +1,35 @@
+{% include "header.html" %}
+    <body>
+        <div class="container">
+            {% for field in page_obj %}
+            <div class="jumbotron">
+                <p>Name: {{field.name}}</p>
+                <p>Description: {{field.description}}</p>
+                <p>Link: <a href="{{hostname}}/files/f/{{field.name}}">{{hostname}}/files/f/{{field.name}}</a></p>
+            </div>
+            {% endfor %}
+            <div class="pagination">
+                <nav aria-label="Page navigation" class="mx-auto" style="width: 200px;">
+                    <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                    {% endif %}
+            
+                    <span class="current">
+                        <li class="page-item active"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                        
+                    {% endif %}
+                    </ul>
+                    
+                </nav>
+            </div>  
+        </div>
+        
+    </body>
+</html>

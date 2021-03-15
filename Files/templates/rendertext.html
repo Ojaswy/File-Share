@@ -1,0 +1,43 @@
+{% include "header.html" %}
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="PUBLIC">
+<META HTTP-EQUIV="max-age" CONTENT="31536000">
+<meta name="robots" content="noindex,nofollow " />
+<link rel="stylesheet"
+    href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/default.min.css">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    function copyUrl() {
+        const copyText = document.getElementById("urlBox");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
+</script>
+    <body>
+        <div class="container">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" value="" aria-label="Url" id="urlBox" readonly>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="javascript:copyUrl()">Copy URL</a>
+            </form>
+            {% if viewBecauseStaff == True %}
+            <div class="alert alert-dismissible fade show alert-danger" role="alert">
+                Warning: You are not the owner of this file, you only can see it because you are staff.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            {% endif %}
+            {% if not errormessage == "" %}
+                <div class="alert alert-warning" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+            <p>Description: {{description}}</p>
+            <pre><code>{{text}}</pre></code>
+        </div>
+    </body>
+<script>
+    document.getElementById("urlBox").value = window.location.href;
+</script>
+</html>

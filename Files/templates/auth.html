@@ -1,0 +1,22 @@
+{% include "header.html" %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Login:</h2><br>
+            <form action="" method="post">
+                {% if not errormessage == "" %}
+                <div class="alert alert-danger" role="alert">
+                    {{ errormessage }}
+                </div>
+                {% endif %}
+                {% csrf_token %}
+                {{form.as_p}}<br>
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+            <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                const redirecturl = urlParams.get('redirect');
+                 document.getElementById("id_redirecturl").value = redirecturl;
+            </script>
+        </div>
+    </div>
+    
